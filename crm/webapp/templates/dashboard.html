@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h5> Seja Bem-vindo! 👋 </h5>
+
+<hr>
+
+<a class="btn btn-outline-primary btn-sm" href="{% url 'create-record' %}">
+
+    Cadastrar visitantes &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+
+</a>
+
+<!--CADASTRAR O VOLUTANTIO-->
+
+<a class="btn btn-outline-primary btn-sm" href="{% url 'register' %}">
+
+    Cadastrar voluntário &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+
+
+</a>
+
+<!--ACOMPANHAMENTO-->
+
+<a class="btn btn-outline-primary btn-sm" href="{% url 'register' %}">
+
+    Acompanhamento &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+
+
+</a>
+
+<hr>
+
+<table class="table table-hover table-bordered">
+
+    <thead class="table-light">
+
+    <tr>
+        <th scope="col"> Voluntário</th>
+        <th scope="col"> Nome</th>
+        <th scope="col"> Email</th>
+        <th scope="col"> Telefone</th>
+        <th scope="col"> Endereço</th>
+        <th scope="col"> Cidade</th>
+        <th scope="col"> Cep</th>
+        <th scope="col"> Sexo</th>
+        <th scope="col"> Status Civil</th>
+        <th scope="col"> Data Nascimento</th>
+        <th scope="col"> Convite</th>
+        <th scope="col"> convidou</th>
+        <th scope="col"> Criação</th>
+        <th scope="col"> Alterar</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% if records %}
+
+    {% for record in records %}
+
+    <tr>
+
+<!--        <td> {{user.id}}</td>-->
+        <td> {{record.usuario.username}}</td>
+
+
+        <td> {{record.nome}} {{record.sobrenome}}</td>
+        <td> {{record.email}}</td>
+        <td> {{record.telefone}}</td>
+        <td> {{record.endereco}}</td>
+        <td> {{record.cidade}}</td>
+        <td> {{record.cep}}</td>
+        <td> {{record.sexo}}</td>
+        <td> {{record.status_civil}}</td>
+        <td> {{record.dt_nascimento|date:"d/m/Y"|default:'---' }}</td>
+        <td> {{record.convite}}</td>
+        <td> {{record.convidou}}</td>
+<!--        <td> {{record.dt_criacao}}</td>-->
+        <td> {{ record.dt_criacao|date:"d/m/Y"|default:'---' }}</td>
+
+
+        <td><a class="btn btn-success btn-sm" href="{% url 'record' record.id %}"> <i class="fa fa-eye"
+                                                                                      aria-hidden="true"></i> </a></td>
+
+    </tr>
+
+    {% endfor %}
+
+    {% endif %}
+
+
+    </tbody>
+
+
+</table>
+
+
+{% endblock %}

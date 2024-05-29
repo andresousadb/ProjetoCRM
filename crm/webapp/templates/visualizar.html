@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+
+
+    <div class="card-body">
+
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;
+
+        <strong>
+            {{record.nome}}
+
+            {{record.sobrenome|upper}}
+
+        </strong>
+
+        <hr>
+
+        <p><strong> ID: </strong> {{record.id}} </p>
+        <p><strong> Email: </strong> {{record.email}} </p>
+        <p><strong> Telefone: </strong> {{record.telefone}} </p>
+        <p><strong> Endereço: </strong> {{record.endereco}} </p>
+        <p><strong> Cidade: </strong> {{record.cidade}} </p>
+        <p><strong> cep: </strong> {{record.cidade}} </p>
+<!--        <p><strong> UF: </strong> {{record.uf}} </p>-->
+        <p><strong> Status Civil: </strong> {{record.status_civil}} </p>
+        <p><strong> Data Nascimento: </strong> {{record.dt_nascimento}} </p>
+        <p><strong> Sexo: </strong> {{record.sexo}} </p>
+        <p><strong> Convite: </strong> {{record.convite}} </p>
+        <p><strong> Convidou: </strong> {{record.convidou}} </p>
+        <p><strong> Criação: </strong> {{record.dt_criacao}} </p>
+
+
+    </div>
+
+
+</div>
+
+<br>
+
+<a href="{% url 'dashboard' %}" class="btn btn-secondary"> Retornar &nbsp; <i class="fa fa-arrow-left"
+                                                                            aria-hidden="true"></i> </a>
+
+&nbsp;
+
+<a href="{% url 'update-record' record.id %}" class="btn btn-info"> Alterar Registro &nbsp; <i class="fa fa-plus"
+                                                                                            aria-hidden="true"></i> </a>
+
+&nbsp;
+
+<a href="{% url 'delete-record' record.id %}" class="btn btn-danger"> Apagar &nbsp;<i class="fa fa-minus-square"
+                                                                                      aria-hidden="true"></i> </a>
+
+
+{% endblock %}
+
